@@ -1,0 +1,10 @@
+# IDE
+.vscode/
+
+# 构建产物
+build/
+out/
+
+# 运行期产物
+Log/
+
