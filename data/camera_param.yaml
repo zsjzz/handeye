@@ -1,0 +1,30 @@
+# 从 test_camera_orbbec 的实机输出记录；适用于以下彩色流配置。
+# 约定后续采集程序读取此文件，不自动覆盖。
+recorded_at_utc: "2026-10-27T08:51:48Z"
+source: OrbbecSDK
+device_model: SV1301S_U3
+serial_number: AY28162014F
+
+stream:
+  type: Color
+  width: 640
+  height: 480
+  fps: 30
+  format: MJPG
+
+# 焦距与主点单位：像素。
+intrinsics:
+  fx: 450.355438
+  fy: 450.355438
+  cx: 329.012726
+  cy: 244.483078
+
+camera_matrix:
+  - [450.355438, 0.0, 329.012726]
+  - [0.0, 450.355438, 244.483078]
+  - [0.0, 0.0, 1.0]
+
+# 八参数按 OpenCV 顺序排列，不是相机结构体的成员排列顺序。
+distortion_model: opencv_rational
+distortion_order: [k1, k2, p1, p2, k3, k4, k5, k6]
+distortion_coefficients: [0.0451587811, -0.0584350377, 0.000345421518, -0.000160498486, 0.0, 0.0, 0.0, 0.0]
