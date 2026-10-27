@@ -118,4 +118,16 @@ if(BUILD_TESTING)
     set_target_properties(test_robot_rm PROPERTIES
         BUILD_RPATH "${RM_LIB_DIR}"
         INSTALL_RPATH "${RM_LIB_DIR}")
+
+    add_executable(test_camera_orbbec
+        tests/test_camera_orbbec.cpp
+        src/config.cpp
+        src/camera_orbbec.cpp
+    )
+    target_include_directories(test_camera_orbbec PRIVATE include ${ORBBEC_INCLUDE_DIR})
+    target_link_libraries(test_camera_orbbec PRIVATE ${YAML_CPP_TARGET} ${ORBBEC_LIBRARY} pthread)
+    target_compile_options(test_camera_orbbec PRIVATE -Wall -Wextra -Wpedantic)
+    set_target_properties(test_camera_orbbec PROPERTIES
+        BUILD_RPATH "${ORBBEC_LIB_DIR}"
+        INSTALL_RPATH "${ORBBEC_LIB_DIR}")
 endif()
