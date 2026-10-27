@@ -104,8 +104,6 @@ if(BUILD_TESTING)
     add_executable(test_config tests/test_config.cpp src/config.cpp)
     target_include_directories(test_config PRIVATE include)
     target_link_libraries(test_config PRIVATE ${YAML_CPP_TARGET})
-    target_compile_definitions(test_config PRIVATE
-        TEST_CONFIG_PATH="${CMAKE_CURRENT_SOURCE_DIR}/config/config.yaml")
     target_compile_options(test_config PRIVATE -Wall -Wextra -Wpedantic)
     add_test(NAME config COMMAND test_config)
 endif()
