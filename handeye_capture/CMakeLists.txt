@@ -130,4 +130,14 @@ if(BUILD_TESTING)
     set_target_properties(test_camera_orbbec PROPERTIES
         BUILD_RPATH "${ORBBEC_LIB_DIR}"
         INSTALL_RPATH "${ORBBEC_LIB_DIR}")
+
+    add_executable(test_capture
+        tests/test_capture.cpp
+        src/sample_writer.cpp
+        src/camera_opencv.cpp
+    )
+    target_include_directories(test_capture PRIVATE include ${ORBBEC_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS})
+    target_link_libraries(test_capture PRIVATE ${YAML_CPP_TARGET} ${OpenCV_LIBS})
+    target_compile_options(test_capture PRIVATE -Wall -Wextra -Wpedantic)
+    add_test(NAME capture COMMAND test_capture)
 endif()
