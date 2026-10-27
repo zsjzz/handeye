@@ -106,4 +106,16 @@ if(BUILD_TESTING)
     target_link_libraries(test_config PRIVATE ${YAML_CPP_TARGET})
     target_compile_options(test_config PRIVATE -Wall -Wextra -Wpedantic)
     add_test(NAME config COMMAND test_config)
+
+    add_executable(test_robot_rm
+        tests/test_robot_rm.cpp
+        src/config.cpp
+        src/robot_rm.cpp
+    )
+    target_include_directories(test_robot_rm PRIVATE include ${RM_INCLUDE_DIR})
+    target_link_libraries(test_robot_rm PRIVATE ${YAML_CPP_TARGET} ${RM_LIBRARY} pthread)
+    target_compile_options(test_robot_rm PRIVATE -Wall -Wextra -Wpedantic)
+    set_target_properties(test_robot_rm PROPERTIES
+        BUILD_RPATH "${RM_LIB_DIR}"
+        INSTALL_RPATH "${RM_LIB_DIR}")
 endif()
