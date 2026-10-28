@@ -9,3 +9,8 @@ out/
 Log/
 
 data/
+
+# Python 标定程序与运行结果
+__pycache__/
+.pytest_cache/
+/handeye_calibrate/results/
